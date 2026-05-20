@@ -3,6 +3,14 @@ from fastapi import APIRouter
 from schemas.patient_schema import Patient
 from services.prediction_service import predict_patient
 
+from sqlalchemy.orm import Session
+from fastapi import Depends
+from database.database import get_db
+
+from models.patient_model import PatientPrediction
+
+from schemas.response_schema import PredictionResponse
+
 router = APIRouter()
 
 #Get route
@@ -47,6 +55,12 @@ def create_patient(patient: Patient):
             "converted_data" : symptom_data}
 
 @router.post("/predict")
-def predict (patient : Patient):
+def predict (patient : Patient, db: Session = Depends(get_db)):
 
-    return predict_patient(patient)
+    return predict_patient(patient, db)
+
+@router.get("/predictions", response_model = list[PredictionResponse])
+def get_predictions(db: Session = Depends(get_db)):
+    predictions = db.query(PatientPrediction).all()
+
+    return predictions
