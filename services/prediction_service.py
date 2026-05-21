@@ -2,6 +2,8 @@ import joblib
 import numpy as np
 from pytorch_tabnet.tab_model import TabNetClassifier 
 
+from models.patient_model import PatientPrediction
+
 #load scaler
 scaler = joblib.load("scaler.pkl")
 
@@ -40,7 +42,7 @@ feature_names = [
 ]
 feature_importances = joblib.load("feature_importances.pkl")
 
-def predict_patient(patient):
+def predict_patient(patient, db):
 
     # Here you would typically load your trained model and make a prediction based on the patient's data
     
@@ -101,6 +103,39 @@ def predict_patient(patient):
     )
 
     main_reasons = reason_scores[:5]
+
+    #save prediction to database
+    new_prediction = PatientPrediction(
+        name = patient.name,
+        gender = patient.gender,
+        family_history = patient.family_history,
+        inattention = patient.inattention,
+        easily_distracted = patient.easily_distracted,
+        poor_response = patient.poor_response,
+        social_interaction_difficulty = patient.social_interaction_difficulty,
+        communication_issues = patient.communication_issues,
+        poor_task_engagement = patient.poor_task_engagement,
+        excessive_talking = patient.excessive_talking,
+        hyperactivity = patient.hyperactivity,
+        risk_taking_behavior = patient.risk_taking_behavior,
+        forgetfulness = patient.forgetfulness,
+        impulsivity = patient.impulsivity,
+        aggressive = patient.aggressive,
+        lack_of_empathy = patient.lack_of_empathy,
+        pretend_play = patient.pretend_play,
+        eye_contact_or_joint_attention = patient.eye_contact_or_joint_attention,
+        deficits_pointing = patient.deficits_pointing,
+        restrictive_repetitive_movements = patient.restrictive_repetitive_movements,
+        response_to_name = patient.response_to_name,
+        diagnosis = diagnosis,
+        prediction_code = prediction_class
+    )
+
+    db.add(new_prediction)
+
+    db.commit()
+
+    db.refresh(new_prediction)
 
     return {
         "message" : "Prediction completed successfully",
