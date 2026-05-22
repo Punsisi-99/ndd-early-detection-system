@@ -29,4 +29,4 @@ class PredictionResponse(BaseModel):
     created_at: datetime
 
     class Config:
-        from_attributes = True
+        from_attributes = True      #allows FastAPI/Pydantic to convert SQLAlchemy objects into JSON responses automatically.
