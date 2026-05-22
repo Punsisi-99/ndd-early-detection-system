@@ -11,6 +11,9 @@ from models.patient_model import PatientPrediction
 
 from schemas.response_schema import PredictionResponse
 
+from auth.auth_handler import verify_token
+from auth.auth_bearer import get_current_admin
+
 router = APIRouter()
 
 #Get route
@@ -60,7 +63,10 @@ def predict (patient : Patient, db: Session = Depends(get_db)):
     return predict_patient(patient, db)
 
 @router.get("/predictions", response_model = list[PredictionResponse])
-def get_predictions(db: Session = Depends(get_db)):
+def get_predictions(
+    db: Session = Depends(get_db),
+    current_admin: str =Depends(get_current_admin)
+):
     predictions = db.query(PatientPrediction).all()
 
     return predictions
