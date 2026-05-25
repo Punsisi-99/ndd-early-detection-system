@@ -1,0 +1,182 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing:border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-color: #f4f7fb;
+}
+
+.signin-container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.signin-card {
+    background-color: #fff;
+    padding: 40px;
+    width: 350px;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.signin-card h1 {
+    margin-bottom: 10px;
+    color: #1d3557;
+    text-align: center;
+    font-size: 24px;
+}
+
+.subtitle {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #696969;
+}
+
+.signin-card form {
+    display: flex;
+    flex-direction: column;
+}
+
+.signin-card input {
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.signin-card button {
+    padding: 12px;
+    background-color: #457b9d;
+    color: #fff;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.signin-card button:hover {
+  background-color: #1d3557;
+}
+
+.prediction-container {
+    padding: 40px 20px;
+    display: flex;
+    justify-content: center;
+}
+
+.prediction-card {
+    background: #fff;
+    width: 100%;
+    max-width: 700px;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 20px rgba(0,0,0,0.1);
+}
+
+.prediction-card h1 {
+    margin-bottom: 30px;
+    color: #1d3557;
+    text-align: center;
+    font-size: 24px;
+}
+
+.prediction-card h2{
+    margin-top: 30px;
+    margin-bottom: 20px;
+    color: #457b9d;
+    font-size: 20px;
+}
+
+.form-group{
+    display: flex;
+    flex-direction: column;
+    margin-bottom:20px;
+}
+
+.form-group label {
+    margin-bottom: 8px;
+    color: #696969;
+    font-weight: bold;
+}
+
+.form-group input,
+.form-group select {
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 8px; 
+    font-size: 14px;
+    margin-bottom: 15px;
+}
+
+.prediction-card button {
+    width: 100%;
+    padding: 14px;
+    background-color: #457b9d;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.prediction-card button:hover {
+  background-color: #1d3557;
+}
+
+.results-container {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.results-card {
+    background: #fff;
+    width: 500px;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0px 4px 20px rgba(0,0,0,0.1);
+}
+
+.results-card h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #1d3557;
+    font-size: 24px;
+}
+
+.results-card h2 {
+    color: #e63946;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.healthy-message {
+    font-size: 20px;
+    color: #2a9d8f;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.results-card h3 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  color: #203858;
+}
+
+.results-card ul {
+    padding-left: 40px;
+}
+
+.results-card li {
+    margin-bottom:10px;
+    color: #696969;
+}
