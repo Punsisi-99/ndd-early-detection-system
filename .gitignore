@@ -1,3 +1,11 @@
+# Python
+venv/
+__pycache__/
+*.pyc
+
+# Environment variables
+.env
+
 # Logs
 logs
 *.log
@@ -7,9 +15,14 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 
+# Node modules
 node_modules
+
+# Build folders
 dist
 dist-ssr
+
+# Local files
 *.local
 
 # Editor directories and files
