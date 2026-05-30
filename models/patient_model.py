@@ -32,4 +32,3 @@ class PatientPrediction(Base):
     diagnosis = Column(String, nullable=False)
     prediction_code = Column(Integer, nullable=False)
     created_at = Column(DateTime, default=datetime.utcnow)
-
