@@ -2,10 +2,18 @@ import API from "../../services/api";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
 
+import {
+  FaChild,
+  FaVenusMars,
+  FaBrain,
+} from "react-icons/fa";
+
 
 function Prediction() {
     
     const navigate = useNavigate();
+
+    const [loading, setLoading] = useState(false);
     
     const [formData, setFormData] = useState({
         name: "",
@@ -50,22 +58,28 @@ function Prediction() {
 
         e.preventDefault();
 
+        setLoading(true);
+
         try {
+
             const response = await API.post(
                 "/predict",
                 formData
             );
 
-            console.log(response.data);  //navigate to result page with prediction result
-
             navigate("/results", {
                 state: response.data
             });
-        }
-        catch (error) {
+
+        } catch (error) {
+
             console.error(error);
 
             alert("Prediction failed. Please try again.");
+
+        } finally {
+
+            setLoading(false);
         }
     };
 
@@ -95,13 +109,27 @@ function Prediction() {
         <div className="prediction-container">
             <div className="prediction-card">
 
-                <h1>NDD Prediction Symptom Analysis</h1>
+                <div className="prediction-header">
+
+                    <FaBrain className="brain-icon" />
+
+                    <h1>NDDs Early Detection</h1>
+
+                    <p>
+                        AI-powered neurodevelopmental symptom assessment system
+                    </p>
+
+                </div>
 
                 <form onSubmit={handleSubmit}>
 
                     {/* Child Name */}
                     <div className="form-group">
-                        <label>Name of the Child</label>
+
+                        <label>
+                            <FaChild className="input-icon" />
+                            Child Name
+                        </label>
 
                         <input
                             type="text"
@@ -110,6 +138,7 @@ function Prediction() {
                             onChange={handleChange}
                             required
                         />
+
                     </div>
 
                     {/* Age in Months */}
@@ -127,7 +156,10 @@ function Prediction() {
 
                     {/* Gender */}
                     <div className="form-group">
-                        <label>Gender</label>
+                        <label>
+                            <FaVenusMars className="input-icon" />
+                            Gender
+                        </label>
 
                         <select
                             name="gender"
@@ -172,7 +204,17 @@ function Prediction() {
                         </div>
                     ))}
 
-                    <button type="submit">Predict Result</button>
+                    <button
+                        type="submit"
+                        disabled={loading}
+                    >
+
+                        {loading
+                            ? "Analyzing Symptoms..."
+                            : "Predict Result"
+                        }
+
+                    </button>
                 </form>
             </div>
         </div>
