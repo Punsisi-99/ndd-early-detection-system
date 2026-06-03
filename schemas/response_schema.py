@@ -4,6 +4,7 @@ from datetime import datetime
 class PredictionResponse(BaseModel):
     id: int
     name: str
+    age_months: int
     gender: str
     family_history: str
     inattention: str
@@ -26,6 +27,7 @@ class PredictionResponse(BaseModel):
     response_to_name: str
     diagnosis: str
     prediction_code: int
+    main_reasons: str | None = None
     created_at: datetime
 
     class Config:

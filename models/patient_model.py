@@ -1,4 +1,4 @@
-from sqlalchemy import Column, Integer, String, DateTime
+from sqlalchemy import Column, Integer, String, DateTime, Text
 from datetime import datetime
 
 from database.database import Base
@@ -9,6 +9,7 @@ class PatientPrediction(Base):
 
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String, nullable=False)
+    age_months = Column(Integer, nullable=False)
     gender = Column(String, nullable=False)
     family_history = Column(String, nullable=False)
     inattention = Column(String, nullable=False)
@@ -31,4 +32,5 @@ class PatientPrediction(Base):
     response_to_name = Column(String, nullable=False)
     diagnosis = Column(String, nullable=False)
     prediction_code = Column(Integer, nullable=False)
+    main_reasons = Column(Text, nullable=True)
     created_at = Column(DateTime, default=datetime.utcnow)
