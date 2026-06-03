@@ -104,9 +104,14 @@ def predict_patient(patient, db):
 
     main_reasons = reason_scores[:5]
 
+    reasons_text = ", ".join(
+    [reason["symptom"] for reason in main_reasons]
+    )
+
     #save prediction to database
     new_prediction = PatientPrediction(
         name = patient.name,
+        age_months = patient.age_months,
         gender = patient.gender,
         family_history = patient.family_history,
         inattention = patient.inattention,
@@ -128,7 +133,8 @@ def predict_patient(patient, db):
         restrictive_repetitive_movements = patient.restrictive_repetitive_movements,
         response_to_name = patient.response_to_name,
         diagnosis = diagnosis,
-        prediction_code = prediction_class
+        prediction_code = prediction_class,
+        main_reasons = reasons_text
     )
 
     db.add(new_prediction)
