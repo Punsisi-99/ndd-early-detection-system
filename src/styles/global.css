@@ -288,10 +288,12 @@ button:disabled {
 }
 
 .history-card {
+    width: 100%;
     background: #fff;
     padding: 30px;
     border-radius: 14px;
     box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    overflow-x: auto;
 }
 
 .history-card h1 {
@@ -301,7 +303,7 @@ button:disabled {
 }
 
 .search-box{
-    width: 100%;
+    width: 50%;
     padding: 12px;
     margin-bottom: 25px;
     border-radius: 8px;
@@ -310,14 +312,14 @@ button:disabled {
 }
 
 table {
-    width: 100%;
+    width: 2500px;
     border-collapse: collapse;
 }
 
 th {
     background: #1d3557;
     color: white;
-    padding: 12px;
+    padding: 10px;
 }
 
 td {
