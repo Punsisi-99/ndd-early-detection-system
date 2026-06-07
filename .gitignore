@@ -35,3 +35,12 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Database
+ndd_database.db
+
+# Python cache
+*.db
+
+# OS files
+Thumbs.db
