@@ -58,8 +58,6 @@ Machine Learning Model (TabNet)
 
 SQLite Database
 
----
-
 ## Technology Stack
 
 ### Frontend
